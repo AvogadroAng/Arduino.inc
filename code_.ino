@@ -57,6 +57,8 @@ for(int i = 0; i < 2; i++)
 
 digitalWrite(x[x_], HIGH);
 digitalWrite(y[y_], HIGH);
+
+printer();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////// RUNNER SPACE (AND APPENDAGES) /////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,6 +66,9 @@ digitalWrite(y[y_], HIGH);
 void loop() {
 
 //changing the state of "x_"
+
+digitalWrite(x[x_], LOW);
+digitalWrite(y[y_], LOW);
 
 if(digitalRead(x_up) > 200)
 {
@@ -102,7 +107,26 @@ if(digitalRead(y_down) > 200)
     y_ = 1;
   }
 }
+digitalWrite(x[x_], HIGH);
+digitalWrite(y[y_], HIGH);
 
+printer();
 }
+
+void printer(){
+  for(int i = 0; i < 4; i++)
+  {
+    if(digitalRead(led[i]) > 200)
+    {
+      Serial.print("(" + x_ + "," + y_ + ") = 1");
+    }
+  }
+}
+
+
+
+
+
+
 
 
